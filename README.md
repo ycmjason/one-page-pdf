@@ -1,5 +1,9 @@
 # one-page-pdf
 
+
+[![NPM](https://img.shields.io/npm/v/one-page-pdf)](https://www.npmjs.com/package/one-page-pdf)
+[![Publish](https://github.com/ycmjason/one-page-pdf/actions/workflows/publish.yml/badge.svg)](https://github.com/ycmjason/one-page-pdf/actions/workflows/publish.yml)
+
 A tool to generate single page PDFs from URLs.
 
 ## Usage
