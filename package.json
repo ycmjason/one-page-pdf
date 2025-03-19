@@ -1,6 +1,6 @@
 {
 	"name": "one-page-pdf",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "A tool to generate single page PDFs from URLs",
 	"type": "module",
 	"main": "./dist/generateSinglePagePDF.js",
@@ -18,7 +18,12 @@
 		"type": "git",
 		"url": "git+https://github.com/ycmjason/one-page-pdf.git"
 	},
-	"keywords": ["pdf", "one-page", "puppeteer", "url"],
+	"keywords": [
+		"pdf",
+		"one-page",
+		"puppeteer",
+		"url"
+	],
 	"author": {
 		"name": "YCM Jason",
 		"email": "me@ycmjason.com",
@@ -29,7 +34,12 @@
 	"bugs": {
 		"url": "https://github.com/ycmjason/one-page-pdf/issues"
 	},
-	"files": ["dist", "src", "README.md", "LICENSE"],
+	"files": [
+		"dist",
+		"src",
+		"README.md",
+		"LICENSE"
+	],
 	"types": "src/index.ts",
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
