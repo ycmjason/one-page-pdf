@@ -1,4 +1,42 @@
 {
-  "name": "single-page-pdf",
-  "packageManager": "yarn@4.6.0"
+  "name": "one-page-pdf",
+  "version": "1.0.0",
+  "description": "A tool to generate single page PDFs from URLs",
+  "type": "module",
+  "main": "src/generateSinglePagePDF.ts",
+  "bin": {
+    "one-page-pdf": "./src/cli.ts"
+  },
+  "packageManager": "yarn@4.7.0",
+  "dependencies": {
+    "puppeteer": "^24.4.0"
+  },
+  "engines": {
+    "node": ">=23.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ycmjason/one-page-pdf.git"
+  },
+  "keywords": [
+    "pdf",
+    "one-page",
+    "puppeteer",
+    "url"
+  ],
+  "author": {
+    "name": "YCM Jason",
+    "email": "me@ycmjason.com",
+    "url": "https://www.ycmjason.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/ycmjason/one-page-pdf#readme",
+  "bugs": {
+    "url": "https://github.com/ycmjason/one-page-pdf/issues"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE"
+  ]
 }
