@@ -2,12 +2,17 @@
 import { writeFile } from "node:fs/promises";
 import { generateSinglePagePDF } from "./generateSinglePagePDF.js";
 
-const url = process.argv[2];
-const outputPath = process.argv[3];
+const [_node, _script, url, outputPath] = process.argv;
 
 if (!url || !outputPath) {
 	console.error("Usage: one-page-pdf <url> <output_file>");
 	process.exit(1);
+}
+
+if (!/http/.test(url)) {
+	console.warn(
+		`provided url \`${url}\` does not start with http:// or https://, this might cause problem...`,
+	);
 }
 
 const pdfData = await generateSinglePagePDF(url);
