@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { writeFile } from "node:fs/promises";
-import { generateSinglePagePDF } from "./generateSinglePagePDF";
+import { generateSinglePagePDF } from "./generateSinglePagePDF.js";
 
 const url = process.argv[2];
 const outputPath = process.argv[3];
