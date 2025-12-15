@@ -2,8 +2,8 @@ import puppeteer from 'puppeteer';
 
 export const generateSinglePagePDF = async (url: string): Promise<Uint8Array> => {
   const browser = await puppeteer.launch({
+    dumpio: true,
     defaultViewport: null,
-    args: ['--no-sandbox'],
     headless: true,
   });
   const page = await browser.newPage();
@@ -16,6 +16,7 @@ export const generateSinglePagePDF = async (url: string): Promise<Uint8Array> =>
   ]);
 
   const pdfBuffer = await page.pdf({
+    waitForFonts: true,
     printBackground: true,
     width: `${pageWidth}px`,
     height: `${pageHeight}px`,
