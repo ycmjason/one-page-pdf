@@ -1,15 +1,16 @@
 {
-	"compilerOptions": {
-		"target": "ES2020",
-		"module": "ESNext",
-		"moduleResolution": "node",
-		"outDir": "./dist",
-		"rootDir": "./src",
-		"strict": true,
-		"noUncheckedIndexedAccess": true,
-		"esModuleInterop": true,
-		"skipLibCheck": true
-	},
-	"include": ["src"],
-	"exclude": ["node_modules"]
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "erasableSyntaxOnly": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }
