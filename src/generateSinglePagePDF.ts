@@ -8,6 +8,7 @@ export const generateSinglePagePDF = async (
     dumpio: !!options?.debug,
     defaultViewport: null,
     headless: 'shell',
+    args: ['--disable-dev-shm-usage', '--disable-setuid-sandbox', '--no-sandbox'],
   });
   const page = await browser.newPage();
 
