@@ -1,14 +1,22 @@
 #!/usr/bin/env node
 import { writeFile } from 'node:fs/promises';
+import mri from 'mri';
 import { generateSinglePagePDF } from './generateSinglePagePDF.js';
 
-const args = process.argv.slice(2);
-const debugFlag = args.includes('--debug');
-const nonFlagArgs = args.filter(arg => !arg.startsWith('--'));
-const [url, outputPath] = nonFlagArgs;
+const args = mri<{
+  debug: boolean;
+  zoom: string;
+}>(process.argv.slice(2), {
+  default: {
+    debug: false,
+    zoom: '1',
+  },
+});
+
+const [url, outputPath] = args._;
 
 if (!url || !outputPath) {
-  console.error('Usage: one-page-pdf [--debug] <url> <output_file>');
+  console.error('Usage: one-page-pdf [--debug] [--zoom <number>] <url> <output_file>');
   process.exit(1);
 }
 
@@ -18,6 +26,9 @@ if (!/http/.test(url)) {
   );
 }
 
-const pdfData = await generateSinglePagePDF(url, { debug: debugFlag });
+const pdfData = await generateSinglePagePDF(url, {
+  debug: args.debug,
+  zoom: Number(args.zoom),
+});
 await writeFile(outputPath, pdfData);
 console.log(`PDF saved at: ${outputPath}`);
