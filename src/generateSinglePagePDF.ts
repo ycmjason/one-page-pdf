@@ -1,10 +1,13 @@
 import puppeteer from 'puppeteer';
 
-export const generateSinglePagePDF = async (url: string): Promise<Uint8Array> => {
+export const generateSinglePagePDF = async (
+  url: string,
+  options?: { debug?: boolean },
+): Promise<Uint8Array> => {
   const browser = await puppeteer.launch({
-    dumpio: true,
+    dumpio: !!options?.debug,
     defaultViewport: null,
-    headless: true,
+    headless: 'shell',
   });
   const page = await browser.newPage();
 
