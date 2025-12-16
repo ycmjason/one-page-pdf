@@ -1,11 +1,11 @@
 import puppeteer from 'puppeteer';
 
+const A4_WIDTH_PX = 794; // A4 width at 96 DPI (210mm)
+
 export const generateSinglePagePDF = async (
   url: string,
   options: { debug?: boolean; zoom: number },
 ): Promise<Uint8Array> => {
-  const A4_WIDTH_PX = 794; // A4 width at 96 DPI (210mm)
-
   const browser = await puppeteer.launch({
     dumpio: !!options.debug,
     defaultViewport: null,
@@ -13,17 +13,15 @@ export const generateSinglePagePDF = async (
   });
   const page = await browser.newPage();
 
-  // Set viewport to A4 width
+  await page.goto(url, { waitUntil: 'networkidle2' });
   await page.setViewport({
     width: A4_WIDTH_PX,
     height: 0, // Temporary height, will be adjusted
   });
 
-  await page.evaluate(zoomLevel => {
-    document.body.style.zoom = `${zoomLevel}`;
+  await page.evaluate(zoom => {
+    document.body.style.zoom = `${zoom}`;
   }, options.zoom);
-
-  await page.goto(url, { waitUntil: 'networkidle2' });
 
   const [pageHeight, pageWidth] = await Promise.all([
     page.evaluate(() => document.documentElement.scrollHeight),
