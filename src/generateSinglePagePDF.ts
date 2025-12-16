@@ -4,12 +4,20 @@ export const generateSinglePagePDF = async (
   url: string,
   options?: { debug?: boolean },
 ): Promise<Uint8Array> => {
+  const A4_WIDTH_PX = 794; // A4 width at 96 DPI (210mm)
+
   const browser = await puppeteer.launch({
     dumpio: !!options?.debug,
     defaultViewport: null,
     headless: true,
   });
   const page = await browser.newPage();
+
+  // Set viewport to A4 width
+  await page.setViewport({
+    width: A4_WIDTH_PX,
+    height: 0, // Temporary height, will be adjusted
+  });
 
   await page.goto(url, { waitUntil: 'networkidle2' });
 
