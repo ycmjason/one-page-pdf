@@ -7,8 +7,7 @@ export const generateSinglePagePDF = async (
   const browser = await puppeteer.launch({
     dumpio: !!options?.debug,
     defaultViewport: null,
-    headless: 'shell',
-    args: ['--disable-dev-shm-usage', '--disable-setuid-sandbox', '--no-sandbox'],
+    headless: true,
   });
   const page = await browser.newPage();
 
